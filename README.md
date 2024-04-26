@@ -1,7 +1,7 @@
 [![Go Reference](https://pkg.go.dev/badge/github.com/containers/image/v5.svg)](https://pkg.go.dev/github.com/containers/image/v5) [![Build Status](https://api.cirrus-ci.com/github/containers/image.svg)](https://cirrus-ci.com/github/containers/image)
 =
 
-`image` is a set of Go libraries aimed at working in various way with
+`image` is a set of Go libraries aimed at working with
 containers' images and container image registries.
 
 The containers/image library allows application to pull and push images from
@@ -9,24 +9,25 @@ container image registries, like the docker.io and quay.io registries. It also
 implements "simple image signing".
 
 The containers/image library also allows you to inspect a repository on a
-container registry without pulling down the image. This means it fetches the
-repository's manifest and it is able to show you a `docker inspect`-like json
-output about a whole repository or a tag. This library, in contrast to `docker
-inspect`, helps you gather useful information about a repository or a tag
-without requiring you to run `docker pull`.
+container registry without pulling down the image.
+This means it fetches the repository's manifest and shows you a
+`docker inspect`-like json output about a whole repository or a tag.
+In contrast to `docker inspect`, this library helps you gather useful
+information about a repository or a tag without requiring you to run `docker pull`.
 
 The containers/image library also allows you to translate from one image format
-to another, for example docker container images to OCI images. It also allows
-you to copy container images between various registries, possibly converting
-them as necessary, and to sign and verify images.
+to another, for example docker container images to OCI images.
+It also allows you to copy container images between registries, possibly converting
+them as necessary.
+It also signs and verifies images.
 
 ## Command-line usage
 
-The containers/image project is only a library with no user interface;
+The containers/image project is a library with no user interface;
 you can either incorporate it into your Go programs, or use the `skopeo` tool:
 
 The [skopeo](https://github.com/containers/skopeo) tool uses the
-containers/image library and takes advantage of many of its features,
+containers/image library and takes advantage of its features,
 e.g. `skopeo copy` exposes the `containers/image/copy.Image` functionality.
 
 ## Dependencies
@@ -35,7 +36,7 @@ This library ships as a [Go module].
 
 ## Building
 
-If you want to see what the library can do, or an example of how it is called,
+If you want to see what the library can do, or an example of how to call it,
 consider starting with the [skopeo](https://github.com/containers/skopeo) tool
 instead.
 
@@ -46,13 +47,16 @@ are also available (using those exact versions or different versions of
 your choosing).
 
 This library also depends on some C libraries. Either install them:
+
 ```sh
 Fedora$ dnf install gpgme-devel libassuan-devel # potentially also ostree-devel
 macOS$ brew install gpgme
 ```
-or use the build tags described below to avoid the dependencies (e.g. using `go build -tags …`)
 
-[Go module]: https://github.com/golang/go/wiki/Modules
+or use the build tags described below to avoid the dependencies
+(e.g. using `go build -tags …`).
+
+[Go module]: https://go.dev/wiki/Modules
 [go.mod]: https://github.com/containers/image/blob/master/go.mod
 
 ### Supported build tags
@@ -70,7 +74,8 @@ and impossible to import when this build tag is not in use.
 
 Information about contributing to this project.
 
-When developing this library, please use `make` (or `make … BUILDTAGS=…`) to take advantage of the tests and validation.
+When developing this library, please use `make` (or `make … BUILDTAGS=…`)
+to take advantage of the tests and validation.
 
 ## License
 
